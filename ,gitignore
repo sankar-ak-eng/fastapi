@@ -1,0 +1,67 @@
+# ---- Python ----
+*__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# ---- FastAPI / Uvicorn ----
+*.log
+*.pid
+
+# ---- Environment ----
+.env
+.env.*
+!.env.example
+
+# ---- IDE / Editor ----
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ---- OS files ----
+.DS_Store
+Thumbs.db
+
+# ---- Byte-compiled / cache ----
+.pytest_cache/
+.mypy_cache/
+pytestdebug.log
+
+# ---- Database ----
+*.db
+*.sqlite3
+
+# ---- Docker ----
+# Ignore Docker files that might store build cache
+**/__pycache__/
+docker-data/
+docker-volume/
+docker-compose.override.yml
+
+# ---- Alembic ----
+alembic/versions/*.pyc
+alembic/versions/*_tmp.py
+
+# ---- Logs ----
+logs/
+*.log
+
+# ---- Node (if frontend in same repo) ----
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ---- Local files ----
+*.local

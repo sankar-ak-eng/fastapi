@@ -1,7 +1,18 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
+from sqlalchemy.orm import Session
 from .schemas.product_schema import Product
+from .models.product import Base,Product as ProductModel
+from .db.sessions import engine
+from app.db.init_db import init_db
+from app.db.sessions import get_db
+
+
 
 app = FastAPI(title="FastAPI Project")
+
+@app.on_event("startup")
+def on_startup():
+    init_db()  # Create tables automatically
 
 
 products = [
@@ -16,8 +27,9 @@ async def read_root():
 
 
 @app.get("/product/all")
-async def get_all_products():
-    return products
+async def get_all_products(db:Session=Depends(get_db)):
+    data = db.query(ProductModel).all()
+    return data
 
 @app.get("/product/{product_id}")
 async def get_product(product_id: int):
